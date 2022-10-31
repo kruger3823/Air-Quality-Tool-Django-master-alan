@@ -1,0 +1,61 @@
+
+html {
+    margin: 00;
+    padding: 0;
+    font-family: Georgia;
+    background-color: #FAFAFA;
+
+}
+
+div#header {
+    background: #296E01;
+    margin: 50;
+    padding: 0;
+    color: white;
+}
+
+div#header h1 {
+    font-size: 35px;
+    color: white;
+    margin: 10;
+    padding: 10px;
+    font-family: Georgia;
+}
+
+table.states_table {
+    margin: 15px;
+    color: black;
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 90%;
+    text-align: center;
+    padding: 8px;
+}
+
+table.states_table th {
+    background-color: #80B1FB;
+    color: white;
+    font-family: Georgia;
+    font-size: 14px;
+
+}
+
+table.states_table tr {
+    font-size: 13px;
+    height: 30px;
+}
+
+table.states_table tr:nth-child(even) {
+    background-color: white;
+}
+
+table.states_table tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+table.states_image {
+    height: auto; 
+    width: auto; 
+    max-width: 90%; 
+    max-height: 10%;
+}

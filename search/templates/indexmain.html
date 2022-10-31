@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Search</title>  
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'style/main.css' %}">
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    </head>
+    <body>
+    	<div align="center">
+	        <div id="header">
+	            <h1>Chicago PM2.5 Data</h1>
+                <h2>Comparing between AirQuality (AQ), EPA, and PurpleAir (PA)</h2>
+	        </div>
+
+			<form method="get">
+				{% csrf_token %}
+                <table class="form">
+                {{ form }}
+                </table>
+			    <input type="submit" value="Search">
+			</form>
+
+		{% if args %}
+        <div class="args">
+            <pre>{{ args }}</pre>
+        </div>
+        {% endif %}
+
+        {% if err %}
+        <div class="error">
+            {{ err|safe }}
+        </div>
+        {% endif %}
+
+        <div class="image">
+            <div align="center">
+                <div id="header">
+                    <h2>All Years: Barplots, Scatterplots, Boxplots</h2>
+                </div>
+            </div>
+
+            {% if all_years0 != None and all_years0 != False %}
+            <div class="results", style="overflow-x:auto;">
+                <table class="aq_all_years">
+                    <tr>
+                    {% for i in all_years0 %}
+                     <td> <img src="{{ i }}" width="100%"> </td>
+                    {% endfor %}
+                    </tr>
+                </table>
+            </div>
+            {% endif %}
+
+            {% if all_years != None and all_years != False %}
+            <div class="results", style="overflow-x:auto;">
+                <table class="aq_all_years">
+                    <tr>
+                    {% for i in all_years %}
+                     <td> <img src="{{ i }}" width="100%"> </td>
+                    {% endfor %}
+                    </tr>
+                </table>
+            </div>
+            {% endif %}
+
+            <div align="center">
+                <div id="header">
+                    <h2>By Year: Scatterplots, Boxplots, Timeseries, Heatmaps</h2>
+                </div>
+            </div>
+
+            {% if scatters != None and scatters != False %}
+            <div class="results", style="overflow-x:auto;">
+                <table class="aq_scatters">
+                    <tr>
+                    {% for i in scatters %}
+                     <td> <img src="{{ i }}" width="100%"> </td>
+                    {% endfor %}
+                    </tr>
+                </table>
+            </div>
+            {% endif %}
+
+            {% if timeseries != None and timeseries != False %}
+            <div class="results", style="overflow-x:auto;">
+                <table class="aq_timeseries">
+                    <tr>
+                    {% for i in timeseries %}
+                     <td> <img src="{{ i }}" width="100%"> </td>
+                    {% endfor %}
+                    </tr>
+                </table>
+            </div>
+            {% endif %}
+
+            {% if heatmaps != None and heatmaps != False %}
+            <div class="results", style="overflow-x:auto;">
+                <table class="aq_heatmaps">
+                    <tr>
+                    {% for i in heatmaps %}
+                     <td> <img src="{{ i }}" width="100%"> </td>
+                    {% endfor %}
+                    </tr>
+                </table>
+            </div>
+            {% endif %}
+
+            {% if heatmaps1 != None and heatmaps1 != False %}
+            <div class="results", style="overflow-x:auto;">
+                <table class="aq_heatmaps">
+                    <tr>
+                    {% for i in heatmaps1 %}
+                     <td> <img src="{{ i }}" width="100%"> </td>
+                    {% endfor %}
+                    </tr>
+                </table>
+            </div>
+            {% endif %}
+
+            <div align="center">
+                <div id="header">
+                    <h2>By Year and Month: Drilldown Maps</h2>
+                </div>
+            </div>
+
+            {% if month_plot != None and month_plot != False %}
+            <div class="results", style="overflow-x:auto;">
+                <table class="aq_heatmaps">
+                    <tr>
+                    {% for i in month_plot %}
+                     <td> {{ i|safe }} </td>
+                    {% endfor %}
+                    </tr>
+                </table>
+            </div>
+            {% endif %}
+
+        <div align="center">
+            <div id="header">
+                <h2>By Neighborhood: Timeseries, Maps</h2>
+            </div>
+        </div>
+
+        <div align="center">
+            <div id="header">
+                <h3>Time Series: Monthly and Yearly PM2.5</h3>
+            </div>
+        </div>
+
+            {% if neigh_plot != None and neigh_plot != False %}
+            <div class="results", style="overflow-x:auto;">
+                <table class="pa_timeseries">
+                    <tr>
+                    {% for i in neigh_plot %}
+                     <td> <img src="{{ i }}" width="100%"> </td>
+                    {% endfor %}
+                    </tr>
+                </table>
+            </div>
+            {% endif %}
+            
+        <div align="center">
+            <div id="header">
+                <h3>Census Blocks: Highest level of Monthly and Yearly PM2.5</h3>
+            </div>
+        </div>
+
+            {% if plot_div0 != None and plot_div0 != False %}
+            <div class="results", style="overflow-x:auto;">
+                <table class="aq_plotly">
+                    <tr>
+                    {% for i in plot_div0 %}
+                    <td> {{ i|safe }} </td>
+                    {% endfor %}
+                    </tr>
+                </table>
+            </div>
+            {% endif %}
+
+        <div align="center">
+            <div id="header">
+                <h3>Individual measurements: Highest level of Hourly and Monthly PM2.5</h3>
+            </div>
+        </div>
+
+            {% if plot_div != None and plot_div != False %}
+            <div class="results", style="overflow-x:auto;">
+                <table class="aq_plotly">
+                    <tr>
+                    {% for i in plot_div %}
+                    <td> {{ i|safe }} </td>
+                    {% endfor %}
+                    </tr>
+                </table>
+            </div>
+            {% endif %}
+
+        </div>
+    </body>
+</html>
