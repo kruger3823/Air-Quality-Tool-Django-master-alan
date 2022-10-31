@@ -2,12 +2,23 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+            a{
+            text-decoration: none;
+    border: 5px solid white;
+    background-color: bisque;
+
+            }
+        </style>
+
         <title>Search</title>  
         {% load static %}
         <link rel="stylesheet" href="{% static 'style/main.css' %}">
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     </head>
     <body>
+
+
     	<div align="center">
 	        <div id="header">
 	            <h1>Chicago PM2.5 Data</h1>
@@ -198,5 +209,8 @@
             {% endif %}
 
         </div>
+            <br>
+
+           <center><a href="/logout">logout</a></center>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>
     </body>
 </html>
